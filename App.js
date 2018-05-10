@@ -1,21 +1,36 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+import firebase from 'firebase';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>あああああ</Text>
-      </View>
-    );
-  }
-}
+import SignupLoginScreen from './src/screens/SignupLoginScreen';
+import SignupScreen from './src/screens/SignupScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import TopScreen from './src/screens/TopScreen';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+require("firebase/firestore");
+import ENV from './env.json';
+
+const config = {
+  apiKey: ENV.FIREBASE_API_KEY,
+  authDomain: ENV.FIREBASE_AUTH_DOMAIN,
+  databaseURL: ENV.FIREBASE_DB_URL,
+  projectId: ENV.FIREBASE_PRO_ID,
+  storageBucket: ENV.FIREBASE_STORAGE,
+  messagingSenderId: ENV.FIREBASE_SENDER_ID,
+};
+firebase.initializeApp(config);
+/*
+const firestore = firebase.firestore();
+const settings = {timestampsInSnapshots: true};
+firestore.settings(settings);
+*/
+
+const App = createStackNavigator({
+  SignupLogin: {screen: SignupLoginScreen, navigationOptions: { header: null } },
+  SignUp: {screen: SignupScreen},
+  LogIn: {screen: LoginScreen},
+  TopPage: {screen: TopScreen},
+},
+);
+
+export default App;
