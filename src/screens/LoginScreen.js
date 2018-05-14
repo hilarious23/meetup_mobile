@@ -10,15 +10,23 @@ class LoginScreen extends React.Component {
   }
 
   handleSubmit() {
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((user) => {
-        console.log('success', user);
-        this.props.navigation.navigate('TopPage')
-      .catch((error) => {
-        console.log('error', error);
-      })
+  firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+    .then((user) => {
+      console.log('success', user);
+
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'TopPage' }),
+        ],
+      });
+      this.props.navigation.dispatch(resetAction);
+      console.log('login success!')
+    })
+    .catch((error) => {
+      console.log('error', error);
     });
-  }
+}
 /*
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {

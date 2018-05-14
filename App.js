@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation';
+import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 
 import SignupLoginScreen from './src/screens/SignupLoginScreen';
@@ -25,7 +25,7 @@ const settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 */
 
-const App = createStackNavigator({
+const App = StackNavigator({
   SignupLogin: {screen: SignupLoginScreen, navigationOptions: { header: null } },
   SignUp: {screen: SignupScreen},
   LogIn: {screen: LoginScreen},

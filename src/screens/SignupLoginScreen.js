@@ -39,6 +39,11 @@ class SignupLoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  photo: {
+    flex: 1,
+    alignItems: 'stretch',
+    opacity: 0.72,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -56,12 +61,6 @@ const styles = StyleSheet.create({
   backText3: {
     fontSize: 24,
     fontWeight: 'bold',
-  },
-  photo: {
-    flex: 1,
-    alignItems: 'stretch',
-    opacity: 0.66,
-    zIndex: -1,
   },
   loginbutton: {
     top: 120,
@@ -89,6 +88,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize:18,
     opacity: 1,
+    zIndex: 100,
   },
   signupText: {
     color: '#fff',
